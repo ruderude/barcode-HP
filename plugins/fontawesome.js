@@ -12,6 +12,7 @@ const solid = [
   'faUser',
   'faAnchor',
   'faStar',
+  'faCogs',
 ]
 
 // ここに追記

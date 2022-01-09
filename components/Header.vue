@@ -12,7 +12,10 @@
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
         <nuxt-link to="/">
-          <v-toolbar-title class="white--text">BarCodeSystems</v-toolbar-title>
+          <v-toolbar-title class="white--text">
+            <font-awesome-icon :icon="['fas', 'cogs']"  />
+            BarCodeSystems
+          </v-toolbar-title>
         </nuxt-link>
 
         <v-spacer></v-spacer>
