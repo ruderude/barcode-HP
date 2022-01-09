@@ -70,6 +70,10 @@ export default {
           url: '/#works'
         },
         {
+          name: '代表挨拶',
+          url: '/#representative'
+        },
+        {
           name: 'お問い合わせ',
           url: '/contact'
         },

@@ -128,7 +128,7 @@
       </v-row>
     </v-col>
 
-    <v-col id="philosophy" class="bg_1 pa-16" cols="12">
+    <v-col id="representative" class="bg_1 pa-16" cols="12">
       <div>
         <h1 class="indigo--text text--darken-4 text-h4 font-weight-bold mb-4">
           代表挨拶
