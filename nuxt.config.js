@@ -1,5 +1,12 @@
 import colors from 'vuetify/es5/util/colors'
 import * as FontAwesome from './plugins/fontawesome'
+import Sass from 'sass'
+import Fiber from 'fibers'
+
+const lang = 'ja'
+const siteName = '株式会社サイト名'
+const siteDesc = '共通のディスクリプション。'
+const siteKeywords = '１つ目,２つ目,３つ目,４つ目'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -7,13 +14,17 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - barcode-HP',
+    htmlAttrs: {
+      lang
+    },
+    titleTemplate: `%s - ${siteName}`,
     title: 'barcode-HP',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { hid: 'description', name: 'description', content: siteDesc },
+      { hid: 'keywords', name: 'keywords', content: siteKeywords },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -22,6 +33,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    { src: '~/assets/scss/common.scss' },
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -53,6 +65,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -68,9 +81,13 @@ export default {
     }
   },
 
+  styleResources: {
+    scss: ['~/assets/scss/_variable.scss'],
+  },
+
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ['~/assets/scss/_variable.scss'],
     theme: {
       dark: false,
       themes: {
@@ -78,7 +95,19 @@ export default {
     }
   },
 
+  generate: {
+    fallback: true
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    loaders: {
+      scss: {
+        implementation: Sass,
+        sassOptions: {
+          fiber: Fiber
+        }
+      }
+    }
   }
 }

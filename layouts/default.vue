@@ -1,33 +1,58 @@
 <template>
   <v-app>
-
-    <v-app-bar
-      id="top"
-      color="green accent-4" dark
-      fixed
-      app
-    >
-      ヘッダー
-      <nuxt-link to="/" class="mr-2">
-        Top
-      </nuxt-link>
-
-      <nuxt-link to="/other" class="mr-2">
-        Other
-      </nuxt-link>
-
-      <nuxt-link v-scroll-to="'#target'" to class="mr-2">targetの位置へ</nuxt-link>
-
-      <v-btn
-        color="error"
-        @click="onScroll"
+    <header>
+      <v-app-bar
+        id="top"
+        color="indigo darken-1"
+        dark
+        fixed
+        app
       >
-        target-method
-      </v-btn>
+        <nuxt-link to="/">
+          <v-toolbar-title class="white--text">BarCodeSystems</v-toolbar-title>
+        </nuxt-link>
 
+        <v-spacer></v-spacer>
 
+        <v-btn
+          small
+          text
+        >
+          <nuxt-link v-scroll-to="'#philosophy'" to class="white--text mr-2">経営理念</nuxt-link>
+        </v-btn>
 
-    </v-app-bar>
+        <v-btn
+          small
+          text
+        >
+          <nuxt-link v-scroll-to="'#works'" to class="white--text mr-2">リリース実績</nuxt-link>
+        </v-btn>
+
+        <v-btn
+          small
+          text
+        >
+          <nuxt-link v-scroll-to="'#target'" to class="white--text mr-2">content3</nuxt-link>
+        </v-btn>
+
+        <v-btn
+          small
+          text
+        >
+          <nuxt-link v-scroll-to="'#target'" to class="white--text mr-2">content4</nuxt-link>
+        </v-btn>
+
+        <nuxt-link to="/contact" class="mr-2">
+          <v-btn
+            small
+            text
+          >
+            お問い合わせ
+          </v-btn>
+        </nuxt-link>
+
+      </v-app-bar>
+    </header>
 
     <v-main>
       <v-container>
@@ -39,8 +64,8 @@
       color="green accent-4" dark
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-      <span>フッター</span>
+      <span class="mr-2">&copy; 2021</span>
+      <span>BarCodeSystems</span>
     </v-footer>
 
   </v-app>
@@ -66,3 +91,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>
