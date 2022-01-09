@@ -143,7 +143,7 @@
           >
 
             <v-img
-              height="300"
+              height="400"
               :src="representativeImage"
             ></v-img>
 
