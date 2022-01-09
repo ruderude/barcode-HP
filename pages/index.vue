@@ -128,12 +128,49 @@
       </v-row>
     </v-col>
 
+    <v-col id="philosophy" class="bg_1 pa-16" cols="12">
+      <div>
+        <h1 class="indigo--text text--darken-4 text-h4 font-weight-bold mb-4">
+          代表挨拶
+        </h1>
+      </div>
+      <v-row justify="center" align="center">
+        <v-col cols="12">
+          <v-card
+            :loading="loading"
+            class="mx-auto my-12"
+            max-width="500"
+          >
+
+            <v-img
+              height="300"
+              :src="representativeImage"
+            ></v-img>
+
+            <div class="text-left mx-4 mt-2">代表社員</div>
+            <v-card-title class="test pt-0">鬼頭 訓志<span class="text-caption mx-2">KUNSHI KITO</span></v-card-title>
+
+            <v-divider class="mx-4"></v-divider>
+
+            <v-card-subtitle class="text-left">
+              テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+
+              テストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              テキストテキスキストテキストテキストテキストテキストテキスト
+              テキストテキストテキトテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+            </v-card-subtitle>
+
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-col>
+
     <v-col cols="12">
       <Test></Test>
       <v-card
         :loading="loading"
         class="mx-auto my-12"
-        max-width="374"
+        max-width="500"
       >
         <template slot="progress">
           <v-progress-linear
@@ -145,7 +182,7 @@
 
         <v-img
           height="250"
-          :src="image_src"
+          :src="representativeImage"
         ></v-img>
 
         <v-card-title class="test">Bar Code</v-card-title>
@@ -201,7 +238,7 @@ export default {
     worksImage1: require('@/assets/img/tap_question.png'),
     worksImage2: require('@/assets/img/kashikan.png'),
     worksImage3: require('@/assets/img/three_tasks.png'),
-    image_src: require('@/assets/img/Bulbs_bar_counter.jpg'),
+    representativeImage: require('@/assets/img/me1.jpeg'),
     loading: false,
     selection: 0,
   }),

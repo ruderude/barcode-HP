@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-footer
-      color="green accent-4"
+      color="indigo darken-1"
       dark
       app
       absolute
     >
-      <span class="mr-2">&copy; 2021</span>
-      <span>BarCodeSystems</span>
+      <span class="mr-2">&copy; </span>
+      <span>BarCodeSystems合同会社 All Rights Reserved.</span>
     </v-footer>
   </div>
 </template>
