@@ -3,7 +3,7 @@
     <header>
       <v-app-bar
         id="top"
-        color="indigo darken-1"
+        color="indigo darken-4"
         dark
         fixed
         app
@@ -75,6 +75,10 @@ export default {
         {
           name: '代表挨拶',
           url: '/#representative'
+        },
+        {
+          name: 'NEWS',
+          url: '/#news'
         },
         {
           name: 'お問い合わせ',

@@ -136,119 +136,161 @@
       </div>
       <v-row justify="center" align="center">
         <v-col cols="12">
-          <v-card
-            :loading="loading"
-            class="mx-auto my-12"
-            max-width="500"
-          >
+          <transition>
+            <v-card
+              v-show="representativeShow"
+              class="scroll mx-auto my-12 translateY"
+              max-width="500"
+            >
 
-            <v-img
-              height="400"
-              :src="representativeImage"
-            ></v-img>
+              <v-img
+                height="400"
+                :src="representativeImage"
+              ></v-img>
 
-            <div class="text-left mx-4 mt-2">代表社員</div>
-            <v-card-title class="test pt-0">鬼頭 訓志<span class="text-caption mx-2">KUNSHI KITO</span></v-card-title>
+              <div class="text-left mx-4 mt-2">代表社員</div>
+              <v-card-title class="test pt-0">鬼頭 訓志<span class="text-caption mx-2">KUNSHI KITO</span></v-card-title>
 
-            <v-divider class="mx-4"></v-divider>
+              <v-divider class="mx-4"></v-divider>
 
-            <v-card-subtitle class="text-left">
-              テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              <v-card-subtitle class="text-left">
+                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
 
-              テストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-              テキストテキスキストテキストテキストテキストテキストテキスト
-              テキストテキストテキトテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-            </v-card-subtitle>
+                テストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                テキストテキスキストテキストテキストテキストテキストテキスト
+                テキストテキストテキトテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              </v-card-subtitle>
 
-          </v-card>
+            </v-card>
+          </transition>
+
         </v-col>
       </v-row>
     </v-col>
 
-    <v-col cols="12">
-      <Test></Test>
-      <v-card
-        :loading="loading"
-        class="mx-auto my-12"
-        max-width="500"
-      >
-        <template slot="progress">
-          <v-progress-linear
-            color="deep-purple"
-            height="10"
-            indeterminate
-          ></v-progress-linear>
-        </template>
+    <v-col id="news" class="bg_2 pa-16" cols="12">
+      <div>
+        <h1 class="indigo--text text--darken-4 text-h4 font-weight-bold mb-4">
+          BLOG & NEWS
+        </h1>
+      </div>
+      <div class="mb-6">
+        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+      </div>
 
-        <v-img
-          height="250"
-          :src="representativeImage"
-        ></v-img>
+      <v-row justify="center" align="center">
 
-        <v-card-title class="test">Bar Code</v-card-title>
+        <v-col v-for="(blog, index) in blogs" :key="index" cols="12" md="4">
+          <v-card height="400">
+            <v-img
+              height="220"
+              :src="blog.imageUrl"
+            ></v-img>
 
-        <v-card-text>
-          <v-row
-            align="center"
-            class="mx-0"
-          >
-            <v-rating
-              :value="4.5"
-              color="amber"
-              dense
-              half-increments
-              readonly
-              size="14"
-            ></v-rating>
+            <v-divider class="mx-4"></v-divider>
 
-            <div class="grey--text ms-4">
-              4.5 (413)
-            </div>
-          </v-row>
+            <v-card-subtitle class="indigo--text text--darken-4">{{ textCut(blog.title, 14) }}</v-card-subtitle>
 
-          <div class="my-4 text-subtitle-1">
-            $ • Italian, Cafe
-          </div>
+            <v-card-text>
+              <div class="text-left">
+                {{ textCut(blog.detail, 48) }}
+              </div>
+            </v-card-text>
 
-          <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
-        </v-card-text>
+          </v-card>
+        </v-col>
 
-        <v-divider class="mx-4"></v-divider>
-
-        <v-card-title>Tonight's availability</v-card-title>
-
-      </v-card>
+      </v-row>
     </v-col>
-    <v-col cols="12">
-      <div style="height: 1000px">bg-color</div>
-    </v-col>
-    <v-col id="target" class="mt-16">
+    <v-col id="target" class="">
       <nuxt-link v-scroll-to="'#top'" to class="mr-2">トップへ</nuxt-link>
     </v-col>
   </v-row>
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export default {
   name: 'index',
-  data: () => ({
-    topImage: require('@/assets/img/Bulbs_bar_counter.jpg'),
-    philosophyImage: require('@/assets/img/bg-sp.png'),
-    worksImage1: require('@/assets/img/tap_question.png'),
-    worksImage2: require('@/assets/img/kashikan.png'),
-    worksImage3: require('@/assets/img/three_tasks.png'),
-    representativeImage: require('@/assets/img/me1.jpeg'),
-    loading: false,
-    selection: 0,
-  }),
-
+  data () {
+    return {
+      topImage: require('@/assets/img/Bulbs_bar_counter.jpg'),
+      philosophyImage: require('@/assets/img/bg-sp.png'),
+      worksImage1: require('@/assets/img/tap_question.png'),
+      worksImage2: require('@/assets/img/kashikan.png'),
+      worksImage3: require('@/assets/img/three_tasks.png'),
+      representativeImage: require('@/assets/img/me1.jpeg'),
+      representativeShow: true,
+      blogs: [
+        {
+          title: 'ブログ1',
+          detail: 'ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。',
+          imageUrl: require('@/assets/img/blog-image1.jpg'),
+        },
+        {
+          title: 'ブログ2ブログ2ブログ2ブログ2ブログ2ブログ2ブログ2ブログ2ブログ2ブログ2ブログ2ブログ2ブログ2ブログ2',
+          detail: 'ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。',
+          imageUrl: require('@/assets/img/blog-image2.jpg'),
+        },
+        {
+          title: 'ブログ3',
+          detail: 'ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。',
+          imageUrl: require('@/assets/img/blog-image1.jpg'),
+        },
+        {
+          title: 'ブログ4',
+          detail: 'ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。',
+          imageUrl: require('@/assets/img/kashikan.png'),
+        },
+        {
+          title: 'ブログ5',
+          detail: 'ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。',
+          imageUrl: require('@/assets/img/blog-image2.jpg'),
+        },
+        {
+          title: 'ブログ6',
+          detail: 'ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。ブログ本文。',
+          imageUrl: require('@/assets/img/three_tasks.png'),
+        },
+      ],
+    }
+  },
+  computed: {
+  },
   methods: {
-    reserve () {
-      this.loading = true
-
-      setTimeout(() => (this.loading = false), 2000)
+    textCut(text, max_length) {
+      if(text.length > max_length){
+        return text.substr(0, max_length) + '...'
+      }
+      return text
     },
+    scrollItem() {
+      gsap.fromTo('.scroll', {
+        autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 2,
+          scrollTrigger: {
+            trigger: '.scroll',
+            start: 'center center',
+            markers: false
+          }
+        }
+      )
+    },
+  },
+  mounted() {
+    this.scrollItem()
   },
 }
 </script>
@@ -264,5 +306,9 @@ export default {
 
 .bg_3 {
   background-color: burlywood;
+}
+
+.translateY {
+    transform: translateY(200px);
 }
 </style>
